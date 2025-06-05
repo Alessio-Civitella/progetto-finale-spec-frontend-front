@@ -1,0 +1,29 @@
+.details-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fafafa;
+}
+
+.details-container h1 {
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+.details-container p {
+  font-size: 16px;
+  margin: 6px 0;
+}
+
+.details-container a {
+  display: inline-block;
+  margin-top: 16px;
+  text-decoration: none;
+  color: blue;
+}
+.details-container a:hover {
+  text-decoration: underline;
+}
+
