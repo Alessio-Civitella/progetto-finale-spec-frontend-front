@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
 import type { Carne } from "../types";
-import { getFavourites, addFavourite, removeFavourite } from "../utils/favourites";
 
 function Home() {
   const [carni, setCarni] = useState<Carne[]>([]);
   const [loading, setLoading] = useState(true);
-  const [favourites, setFavourites] = useState<string[]>([]);
+  const [favourites, setFavourites] = useState<string[]>(() => {
+    const saved = localStorage.getItem("favourites");
+    return saved ? JSON.parse(saved) : [];
+  });
 
   useEffect(() => {
     fetch("http://localhost:3001/carnes")
@@ -19,23 +21,19 @@ function Home() {
       .catch(() => setLoading(false));
   }, []);
 
-  useEffect(() => {
-    const favs = getFavourites().map((c) => c.id);
-    setFavourites(favs);
-  }, []);
-
   const toggleFavourite = (id: string) => {
-  if (favourites.includes(id)) {
-    setFavourites(favourites.filter((favId) => favId !== id));
-  } else {
-    setFavourites([...favourites, id]);
-  }
-};
+    const updated = favourites.includes(id)
+      ? favourites.filter((favId) => favId !== id)
+      : [...favourites, id];
 
+    setFavourites(updated);
+    localStorage.setItem("favourites", JSON.stringify(updated));
+  };
 
   return (
     <div className="home-container">
       <h1>Lista delle carni</h1>
+      <Link to="/favourites" className="link-preferiti">Vai ai preferiti</Link>
       {loading ? (
         <p>Caricamento...</p>
       ) : (
@@ -45,8 +43,13 @@ function Home() {
               <h2>{carne.title}</h2>
               <p>Categoria: {carne.category}</p>
               <Link to={`/details/${carne.id}`}>Vedi dettagli</Link>
-              <button onClick={() => toggleFavourite(carne.id)}>
-                {favourites.includes(carne.id) ? "Rimuovi dai preferiti" : "Aggiungi ai preferiti"}
+              <button
+                className="favourite-button"
+                onClick={() => toggleFavourite(carne.id)}
+              >
+                {favourites.includes(carne.id)
+                  ? "Rimuovi dai preferiti"
+                  : "Aggiungi ai preferiti"}
               </button>
             </li>
           ))}

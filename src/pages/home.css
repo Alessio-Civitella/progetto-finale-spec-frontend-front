@@ -11,6 +11,22 @@
   color: #333;
 }
 
+.link-preferiti {
+  display: inline-block;
+  margin-bottom: 2rem;
+  padding: 0.6rem 1.2rem;
+  background-color: #28a745;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.link-preferiti:hover {
+  background-color: #218838;
+}
+
 .carni-list {
   list-style: none;
   padding: 0;
@@ -48,6 +64,7 @@
   text-decoration: none;
   color: #007bff;
   font-weight: 600;
+  margin-right: 10px;
 }
 
 .carne-item a:hover {
@@ -70,4 +87,3 @@
 .carne-item button:hover {
   background-color: #0056b3;
 }
-
