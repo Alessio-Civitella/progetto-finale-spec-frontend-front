@@ -1,0 +1,48 @@
+.favourites-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 16px;
+}
+
+.favourites-container h1 {
+  font-size: 28px;
+  margin-bottom: 16px;
+}
+
+.favourite-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.favourite-item a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+}
+
+.favourite-item button {
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.favourite-item button:hover {
+  background-color: #c9302c;
+}
+
+.favourites-container a {
+  display: inline-block;
+  margin-top: 20px;
+  color: blue;
+  text-decoration: none;
+}
+
+.favourites-container a:hover {
+  text-decoration: underline;
+}
