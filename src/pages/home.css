@@ -27,6 +27,22 @@
   background-color: #218838;
 }
 
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.filters input,
+.filters select {
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  flex: 1 1 200px;
+}
+
 .carni-list {
   list-style: none;
   padding: 0;
