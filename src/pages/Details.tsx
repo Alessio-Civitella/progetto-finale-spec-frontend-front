@@ -1,4 +1,2 @@
-const Details = () => {
-  return <div>Pagina dettagli</div>;
-};
+const Details: React.FC = () => <div>Dettagli carne</div>;
 export default Details;
