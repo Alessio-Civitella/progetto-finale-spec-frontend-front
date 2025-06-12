@@ -23,7 +23,7 @@ function Favourites() {
       .catch(() => setLoading(false));
   }, []);
 
-  const carniPreferite = carni.filter((carne) => favourites.includes(carne.id));
+  const carniPreferite = carni.filter((carne) => favourites.includes(String(carne.id)));
 
   return (
     <div className="favourites-container">
