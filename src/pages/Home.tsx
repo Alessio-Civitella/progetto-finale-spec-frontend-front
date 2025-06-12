@@ -134,8 +134,8 @@ function Home() {
           value={sortOrder}
           onChange={(e) => setSortOrder(e.target.value as 'asc' | 'desc')}
         >
-          <option value="asc">Crescente</option>
-          <option value="desc">Decrescente</option>
+          <option value="asc">A-Z</option>
+          <option value="desc">Z-A</option>
         </select>
       </div>
 
