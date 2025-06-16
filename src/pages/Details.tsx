@@ -15,9 +15,9 @@ function Details() {
       fetch(`http://localhost:3001/carnes/${id}`)
         .then((res) => res.json())
         .then((data) => {
-          setCarne(data);
+          const carneData = (data && (data as any).carne) ? (data as any).carne : data;
+          setCarne(carneData);
           setLoading(false);
-          // Controlla se è nei preferiti
           const favs = getFavourites();
           setIsFavourite(favs.some((c) => c.id === data.id));
         })
@@ -28,7 +28,7 @@ function Details() {
   const toggleFavourite = () => {
     if (!carne) return;
     if (isFavourite) {
-      removeFavourite(carne.id);
+      removeFavourite(String(carne.id));
       setIsFavourite(false);
     } else {
       addFavourite(carne);

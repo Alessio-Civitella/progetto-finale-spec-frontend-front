@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Home from './pages/Home';
 import Favourites from './pages/Favourites';
 import Compare from './pages/Compare';
+import Details from './pages/Details';
 
 const App: React.FC = () => {
   return (
@@ -12,6 +13,7 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/favourites" element={<Favourites />} />
+        <Route path="/details/:id" element={<Details />} />
         <Route path="/compare" element={<Compare />} />
       </Routes>
     </>
