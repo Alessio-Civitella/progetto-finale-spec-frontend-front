@@ -69,19 +69,20 @@ function Home() {
     localStorage.setItem("comparisons", JSON.stringify(comparisons));
   };
 
-  const filteredCarni = carni
+  const filteredCarni: Carne[] = [...carni]
     .filter((carne) =>
       carne.title.toLowerCase().includes(searchQuery.toLowerCase())
     )
     .filter((carne) =>
       selectedCategory === "all" ? true : carne.category === selectedCategory
     )
-    .sort((a, b) => {
-      const fieldA = String(a[sortField]).toLowerCase();
-      const fieldB = String(b[sortField]).toLowerCase();
-      if (fieldA < fieldB) return sortOrder === "asc" ? -1 : 1;
-      if (fieldA > fieldB) return sortOrder === "asc" ? 1 : -1;
-      return 0;
+    .sort((a: Carne, b: Carne) => {
+      const fieldA = String(a[sortField]);
+      const fieldB = String(b[sortField]);
+
+      // Confronto alfabetico sensibile alla lingua italiana, ignorando maiuscole/minuscole
+      const comparison = fieldA.localeCompare(fieldB, 'it', { sensitivity: 'base' });
+      return sortOrder === 'asc' ? comparison : -comparison;
     });
 
   const categorieUniche = Array.from(new Set(carni.map((c) => c.category)));
